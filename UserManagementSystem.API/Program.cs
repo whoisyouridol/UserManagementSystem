@@ -6,6 +6,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using UserManagementSystem.BAL;
 using UserManagementSystem.BAL.DTOs.Request;
+using UserManagementSystem.BAL.Middlewares;
 using UserManagementSystem.BAL.Profiles;
 using UserManagementSystem.DAL;
 using UserManagementSystem.DAL.DB;
@@ -13,7 +14,7 @@ using UserManagementSystem.DAL.DB;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddHttpClient();
 builder.Services.AddControllers()
     .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddUserRequestDTO>());
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -79,6 +80,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapControllers();
 

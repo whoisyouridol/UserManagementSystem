@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using UserManagementSystem.BAL;
 using UserManagementSystem.BAL.DTOs.Request;
 using UserManagementSystem.BAL.DTOs.Response;
@@ -19,7 +20,7 @@ namespace UserManagementSystem.API.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
-        [HttpPost("AddUser")]
+        [HttpPost]
         public async Task<IActionResult> Add(AddUserRequestDTO request)
         {
             if (!ModelState.IsValid)
@@ -34,7 +35,7 @@ namespace UserManagementSystem.API.Controllers
 
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        [HttpPut("Update")]
+        [HttpPut]
         public async Task<IActionResult> Update(UpdateUserRequestDTO request)
         {
             if (!ModelState.IsValid)
@@ -47,7 +48,7 @@ namespace UserManagementSystem.API.Controllers
 
         [ProducesResponseType(200,Type = typeof(GetUserResponseDTO))]
         [ProducesResponseType(400)]
-        [HttpGet("GetUser")]
+        [HttpGet]
         public async Task<IActionResult> Get(int id)
         {
             if (id < 1)

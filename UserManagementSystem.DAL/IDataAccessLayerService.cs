@@ -9,5 +9,11 @@ namespace UserManagementSystem.DAL
         Task<GetUserResponseModel> Get(int id);
         Task Update(UpdateUserRequestModel dto);
         Task Delete(int id);
+        #region external
+        Task<List<AlbumResponseModel>> GetAlbums(int userId);
+        Task<List<PostResponseModel>> GetPosts(int userId);
+        Task<List<TodoResponseModel>> GetTodos(int userId);
+        #endregion
+        Task<int> ValidateUser(string email, string password);
     }
 }

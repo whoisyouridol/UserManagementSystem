@@ -1,4 +1,6 @@
-﻿namespace UserManagementSystem.BAL.DTOs.Request
+﻿using FluentValidation;
+
+namespace UserManagementSystem.BAL.DTOs.Request
 {
     public class AddUserRequestDTO
     {
@@ -8,5 +10,13 @@
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PersonalNumber { get; set; }
+
+        public class AddUserValidator : AbstractValidator<AddUserRequestDTO>
+        {
+            public AddUserValidator()
+            {
+                RuleFor(x => x.PersonalNumber).NotEmpty().MaximumLength(11);
+            }
+        }
     }
 }

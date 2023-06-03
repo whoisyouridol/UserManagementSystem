@@ -21,6 +21,11 @@ namespace UserManagementSystem.BAL.Profiles
             CreateMap<UpdateUserRequestDTO, UpdateUserRequestModel>();
             CreateMap<UpdateUserRequestModel, User>();
             CreateMap<UpdateUserRequestModel, UserProfile>();
+
+            CreateMap<AlbumResponseModel, AlbumResponseDTO>();
+            CreateMap<TodoResponseModel, TodoResponseDTO>();
+            CreateMap<CommentResponseModel, CommentResponseDTO>();
+            CreateMap<PostResponseModel, PostResponseDTO>();
         }
     }
 }

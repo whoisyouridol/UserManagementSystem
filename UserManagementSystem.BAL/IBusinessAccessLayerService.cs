@@ -9,5 +9,9 @@ namespace UserManagementSystem.BAL
         Task<GetUserResponseDTO> Get(int id);
         Task Update(UpdateUserRequestDTO dto);
         Task Delete(int id);
+        Task<List<AlbumResponseDTO>> GetAlbums(int userId);
+        Task<List<TodoResponseDTO>> GetTodos(int userId);
+        Task<List<PostResponseDTO>> GetPosts(int userId);
+        Task<int> ValidateUser(string email, string password);
     }
 }
